@@ -1,0 +1,18 @@
+# ============================================================
+# .gitignore
+# Liste des fichiers/dossiers à NE PAS envoyer sur GitHub
+# ============================================================
+
+# Variables d'environnement (contient les mots de passe !)
+.env
+
+# Dossier des dépendances Node.js (très lourd, inutile à envoyer)
+# npm install les re-télécharge automatiquement depuis package.json
+node_modules/
+
+# Fichiers système Mac
+.DS_Store
+
+# Logs d'erreurs Node.js
+*.log
+npm-debug.log*

@@ -1,0 +1,284 @@
+// ============================================================
+// main.scss - Styles globaux
+// Projet : Trouve ton artisan
+// ============================================================
+
+// ------------------------------------------------------------
+// VARIABLES - Palette de couleurs du brief
+// ------------------------------------------------------------
+$color-light:       #f1f8fc;  // Fond clair
+$color-blue-dark:   #0074c7;  // Bleu foncé (liens, accents)
+$color-blue:        #00497c;  // Bleu principal
+$color-dark:        #384050;  // Texte principal (gris foncé)
+$color-red:         #cd2c2e;  // Rouge (alertes, accents)
+$color-green:       #82b864;  // Vert (succès, badges)
+
+// Variables Bootstrap à surcharger AVANT l'import Bootstrap
+$primary:           $color-blue;
+$secondary:         $color-dark;
+$success:           $color-green;
+$danger:            $color-red;
+$light:             $color-light;
+$body-color:        $color-dark;
+$link-color:        $color-blue-dark;
+
+// Bordures arrondies Bootstrap
+$border-radius:     0.5rem;
+$border-radius-lg:  0.75rem;
+
+// ------------------------------------------------------------
+// IMPORT BOOTSTRAP
+// On importe Bootstrap APRÈS avoir défini nos variables
+// pour qu'il utilise nos couleurs
+// ------------------------------------------------------------
+@import 'bootstrap/scss/bootstrap';
+
+// ------------------------------------------------------------
+// TYPOGRAPHIE
+// La police Graphik est utilisée par la région AuRA
+// On utilise une Google Font similaire en attendant
+// ------------------------------------------------------------
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: $color-dark;
+    background-color: #ffffff;
+}
+
+// ------------------------------------------------------------
+// HEADER
+// ------------------------------------------------------------
+.header {
+    background-color: #ffffff;
+    border-bottom: 3px solid $color-blue;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    &__logo {
+        height: 50px;
+        width: auto;
+    }
+
+    &__nav-link {
+        color: $color-dark;
+        font-weight: 500;
+        text-decoration: none;
+        padding: 0.4rem 0.8rem;
+        border-radius: $border-radius;
+        transition: background-color 0.2s, color 0.2s;
+
+        &:hover,
+        &.active {
+            background-color: $color-blue;
+            color: #ffffff;
+        }
+    }
+
+    &__search {
+        border: 2px solid $color-blue;
+        border-radius: 2rem;
+        padding: 0.4rem 1rem;
+        outline: none;
+        transition: border-color 0.2s;
+
+        &:focus {
+            border-color: $color-blue-dark;
+            box-shadow: 0 0 0 3px rgba(0, 116, 199, 0.2);
+        }
+    }
+}
+
+// ------------------------------------------------------------
+// FOOTER
+// ------------------------------------------------------------
+.footer {
+    background-color: $color-dark;
+    color: #ffffff;
+    padding: 2.5rem 0;
+    margin-top: auto;
+
+    &__title {
+        color: $color-blue-dark;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    &__link {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        display: block;
+        margin-bottom: 0.4rem;
+        transition: color 0.2s;
+
+        &:hover {
+            color: #ffffff;
+        }
+    }
+
+    &__address {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+        line-height: 1.8;
+    }
+}
+
+// ------------------------------------------------------------
+// CARTE ARTISAN (utilisée sur la page liste et accueil)
+// ------------------------------------------------------------
+.artisan-card {
+    border: none;
+    border-radius: $border-radius-lg;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 73, 124, 0.15);
+        color: inherit;
+    }
+
+    &__image {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid $color-light;
+    }
+
+    &__image-placeholder {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: $color-light;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: $color-blue;
+        border: 3px solid $color-blue;
+    }
+
+    &__name {
+        font-weight: 700;
+        color: $color-dark;
+        font-size: 1.1rem;
+    }
+
+    &__specialite {
+        color: $color-blue-dark;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+
+    &__ville {
+        color: #6c757d;
+        font-size: 0.85rem;
+    }
+
+    // Étoiles de notation
+    &__stars {
+        color: #ffc107;
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+}
+
+// ------------------------------------------------------------
+// PAGE ACCUEIL - Section "Comment trouver mon artisan"
+// ------------------------------------------------------------
+.how-it-works {
+    background-color: $color-light;
+    padding: 4rem 0;
+
+    &__step {
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    &__number {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: $color-blue;
+        color: #ffffff;
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+    }
+
+    &__title {
+        font-weight: 600;
+        color: $color-dark;
+    }
+}
+
+// ------------------------------------------------------------
+// HERO - Bannière de page
+// ------------------------------------------------------------
+.hero {
+    background: linear-gradient(135deg, $color-blue 0%, $color-blue-dark 100%);
+    color: #ffffff;
+    padding: 3rem 0;
+    margin-bottom: 3rem;
+
+    &__title {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    &__subtitle {
+        opacity: 0.85;
+        font-size: 1.1rem;
+    }
+}
+
+// ------------------------------------------------------------
+// ÉTOILES (composant réutilisable)
+// ------------------------------------------------------------
+.stars {
+    color: #ffc107;
+    letter-spacing: 2px;
+}
+
+// ------------------------------------------------------------
+// PAGE 404
+// ------------------------------------------------------------
+.not-found {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    &__code {
+        font-size: 8rem;
+        font-weight: 700;
+        color: $color-blue;
+        line-height: 1;
+    }
+}
+
+// ------------------------------------------------------------
+// UTILITAIRES
+// ------------------------------------------------------------
+.text-blue { color: $color-blue-dark; }
+.bg-light-blue { background-color: $color-light; }
+.section { padding: 4rem 0; }
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $color-dark;
+    margin-bottom: 2rem;
+}
