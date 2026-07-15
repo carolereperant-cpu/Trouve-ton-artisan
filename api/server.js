@@ -44,16 +44,8 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS
     : ['http://localhost:5173', 'http://localhost:5174'];
 
 app.use(cors({
-    origin: (origin, callback) => {
-        // On autorise les requêtes sans origine (ex: Postman, curl)
-        // et les origines dans la liste blanche
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error(`CORS : origine ${origin} non autorisée`));
-        }
-    },
-    methods: ['GET'] // On n'autorise que les GET (lecture seule)
+    origin: '*',
+    methods: ['GET']
 }));
 
 // ============================================================
