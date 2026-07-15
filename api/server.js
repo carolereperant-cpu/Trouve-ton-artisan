@@ -31,7 +31,8 @@ const PORT = process.env.PORT || 3000;
 // - X-XSS-Protection : active la protection XSS du navigateur
 // - Strict-Transport-Security : force l'utilisation de HTTPS
 // ============================================================
-app.use(helmet());
+
+// app.use(helmet()); // temporairement désactivé
 
 // ============================================================
 // SÉCURITÉ 2 : CORS
@@ -39,10 +40,6 @@ app.use(helmet());
 // En développement : on accepte localhost
 // En production : on n'acceptera que l'URL du frontend déployé
 // ============================================================
-const allowedOrigins = process.env.ALLOWED_ORIGINS
-    ? process.env.ALLOWED_ORIGINS.split(',')
-    : ['http://localhost:5173', 'http://localhost:5174'];
-
 app.use(cors({
     origin: '*',
     methods: ['GET']
